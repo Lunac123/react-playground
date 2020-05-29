@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Roboto:wght@300;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+@import "colors", "mixins", "simple-grid", "typography", "buttons";
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+}
+
+/* -----------------------------------------------------------------
+    HEADER
+------------------------------------------------------------------- */
+.header {
+  background-color: $dark-grey;
+  height: 40px;
+}
+.header nav {
+  padding-top: 8px;
+}
+
+.header a {
+  color: $white;
+  text-decoration: none;
+  font-family: $roboto-condensed;
+  text-transform: uppercase;
+  padding: 0px 0px 10px 10px;
+}
+
+/* -----------------------------------------------------------------
+    SECTION THEME COLORS
+------------------------------------------------------------------- */
+
+/*  
+    used for temlates h1 tag 
+    [/components/elements/headerTag.js]
+
+*/
+.title-text {
+  color: $grey;
+}
+
+//  font colors for templates
+.light-orange-color {
+  color: $light-orange;
+}
+.dark-orange-color {
+  color: $dark-orange;
+}
+.dark-grey-color {
+  color: $dark-grey;
+}
+.white-color {
+  color: $white;
+}
+// background colors for templates
+.light-orange {
+  background-color: $light-orange;
+  color: $white;
+}
+.dark-orange {
+  background-color: $dark-orange;
+  color: $white;
+}
+.dark-grey {
+  background-color: $dark-grey;
+  color: $white;
+}
+.light-grey {
+  background-color: $light-grey;
+  color: $grey;
+}
+
+.padding-top-bottom {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* -----------------------------------------------------------------
+   CAROUSEL STYLING
+------------------------------------------------------------------- */
+// $transition: ease-in-out 0.3s all;
+// .carousel {
+//   background-color: $dark-grey;
+//   width: 100%;
+//   height: auto;
+//   position: relative;
+// }
+
+// .carousel a {
+//   color: #ccc;
+// }
+
+// .image-slide {
+//   width: calc(100% - 80px);
+//   height: calc(300px - 80px);
+//   padding: 40px;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   transition: background-image 0.5s ease-in-out;
+// }
+
+// .image-slide h1 {
+//   color: $white;
+// }
+
+// .image-slide span {
+//   color: $white;
+// }
+
+// .nextButton,
+// .backButton {
+//   position: absolute;
+//   top: 45%;
+// }
+
+// .nextButton {
+//   right: 40px;
+//   background-image: url("../img/arrow.svg");
+//   background-repeat: no-repeat;
+//   width: 30px;
+//   height: 30px;
+// }
+
+// .backButton {
+//   left: 40px;
+//   background-image: url("../img/arrow.svg");
+//   background-repeat: no-repeat;
+//   width: 30px;
+//   height: 30px;
+//   transform: rotate(180deg);
+// }
+
+/* -----------------------------------------------------------------
+    Carousel styles
+------------------------------------------------------------------- */
+.slide-block {
+  position: absolute;
+  left: 10%;
+  top: 60%;
+}
+$transition: ease-in-out 0.3s all;
+.carousel {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background-color: $dark-grey;
+  overflow: hidden;
+  h2,
+  p {
+    color: $white;
+  }
+  .nextButton,
+  .backButton {
+    position: absolute;
+    top: 45%;
+  }
+  .nextButton {
+    display: block;
+    z-index: 1000;
+    @include border-radius(50%);
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    right: 40px;
+    transition: $transition;
+
+    &.dark-orange {
+      background-color: $dark-orange;
+
+      &:hover {
+        background-color: $dark-grey;
+      }
+    }
+    &.dark-grey {
+      background-color: $dark-grey;
+
+      &:hover {
+        background-color: $dark-orange;
+      }
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      background-image: url("../img/arrow.svg");
+      width: 30px;
+      height: 40px;
+      background-repeat: no-repeat;
+      margin-left: -3px;
+      cursor: pointer;
+    }
+  }
+
+  .backButton {
+    display: block;
+    z-index: 1000;
+    @include border-radius(50%);
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    left: 40px;
+    transition: $transition;
+
+    &.dark-orange {
+      background-color: $dark-orange;
+
+      &:hover {
+        background-color: $dark-grey;
+      }
+    }
+    &.dark-grey {
+      background-color: $dark-grey;
+
+      &:hover {
+        background-color: $dark-orange;
+      }
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      background-image: url("../img/arrow.svg");
+      width: 30px;
+      height: 40px;
+      background-repeat: no-repeat;
+      @include transform(rotate(180deg));
+      margin-left: 2px;
+      cursor: pointer;
+    }
+  }
+
+  .image-slide {
+    width: calc(100% - 100px);
+    height: calc(40vh - 100px);
+    padding: 50px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-image 0.5s ease-in-out;
+  }
+
+  .black-background {
+    background-color: $light-orange;
+  }
+
+  .image-slide h1 {
+    font-size: 2.5em;
+    color: $white;
+  }
+  .image-slide span {
+    color: $white;
+    line-height: 2em;
+  }
+  .banner-buttons-wrapper {
+    position: absolute;
+    bottom: 10px;
+    right: 5%;
+    padding: 5px 5px 0px 0px;
+  }
+  .banner-buttons {
+    width: 15px;
+    height: 15px;
+    // border: 1px solid $dark-grey;
+    border-radius: 50%;
+    background-color: $dark-orange;
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: $dark-grey;
+    }
+  }
+  .active {
+    background-color: $white;
+  }
+}
+// animations
+.animateElementForward {
+  @include animation(animate-banner-forward 0.15s ease-in-out);
+}
+.animateElementBack {
+  @include animation(animate-banner-back 0.15s ease-in-out);
+}
+
+.animateTitleForward {
+  @include animation(animate-title-forward 0.4s ease-in-out);
+}
+.animateTitleBack {
+  @include animation(animate-title-back 0.4s ease-in-out);
+}
+@include keyframes(animate-banner-forward) {
+  0% {
+    transform: translateX(0%);
+    filter: blur(0px);
+  }
+
+  100% {
+    filter: blur(100px);
+    transform: translateX(100%);
+  }
+}
+
+@include keyframes(animate-banner-back) {
+  0% {
+    transform: translateX(0%);
+    filter: blur(0px);
+  }
+
+  100% {
+    filter: blur(100px);
+    transform: translateX(-100%);
+  }
+}
+
+@include keyframes(animate-title-forward) {
+  0% {
+    transform: translateX(1000px);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@include keyframes(animate-title-back) {
+  0% {
+    transform: translateX(-1000px);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
