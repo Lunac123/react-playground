@@ -80,62 +80,6 @@ body {
 }
 
 /* -----------------------------------------------------------------
-   CAROUSEL STYLING
-------------------------------------------------------------------- */
-// $transition: ease-in-out 0.3s all;
-// .carousel {
-//   background-color: $dark-grey;
-//   width: 100%;
-//   height: auto;
-//   position: relative;
-// }
-
-// .carousel a {
-//   color: #ccc;
-// }
-
-// .image-slide {
-//   width: calc(100% - 80px);
-//   height: calc(300px - 80px);
-//   padding: 40px;
-//   background-position: center center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   transition: background-image 0.5s ease-in-out;
-// }
-
-// .image-slide h1 {
-//   color: $white;
-// }
-
-// .image-slide span {
-//   color: $white;
-// }
-
-// .nextButton,
-// .backButton {
-//   position: absolute;
-//   top: 45%;
-// }
-
-// .nextButton {
-//   right: 40px;
-//   background-image: url("../img/arrow.svg");
-//   background-repeat: no-repeat;
-//   width: 30px;
-//   height: 30px;
-// }
-
-// .backButton {
-//   left: 40px;
-//   background-image: url("../img/arrow.svg");
-//   background-repeat: no-repeat;
-//   width: 30px;
-//   height: 30px;
-//   transform: rotate(180deg);
-// }
-
-/* -----------------------------------------------------------------
     Carousel styles
 ------------------------------------------------------------------- */
 .slide-block {
@@ -173,7 +117,7 @@ $transition: ease-in-out 0.3s all;
       background-color: $dark-orange;
 
       &:hover {
-        background-color: $dark-grey;
+        background-color: $light-orange;
       }
     }
     &.dark-grey {
@@ -188,10 +132,10 @@ $transition: ease-in-out 0.3s all;
       content: "";
       display: block;
       background-image: url("../img/arrow.svg");
-      width: 30px;
-      height: 40px;
+      width: 15px;
+      height: 20px;
       background-repeat: no-repeat;
-      margin-left: -3px;
+      margin-left: 4px;
       cursor: pointer;
     }
   }
@@ -210,7 +154,7 @@ $transition: ease-in-out 0.3s all;
       background-color: $dark-orange;
 
       &:hover {
-        background-color: $dark-grey;
+        background-color: $light-orange;
       }
     }
     &.dark-grey {
@@ -225,11 +169,11 @@ $transition: ease-in-out 0.3s all;
       content: "";
       display: block;
       background-image: url("../img/arrow.svg");
-      width: 30px;
-      height: 40px;
+      width: 15px;
+      height: 20px;
       background-repeat: no-repeat;
       @include transform(rotate(180deg));
-      margin-left: 2px;
+
       cursor: pointer;
     }
   }
