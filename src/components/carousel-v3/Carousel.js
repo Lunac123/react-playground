@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import dataSource from "./data";
 import { BackButton, NextButton } from "./";
-import data from "./data";
+import { SliderButton } from "./SliderButton";
+
+// import data from "./data";
 class Carousel1 extends Component {
   constructor(props) {
     super(props);
@@ -11,9 +13,21 @@ class Carousel1 extends Component {
       dataLenght: dataSource.length,
       data: dataSource,
       arraySliceStart: 0,
-      totalPageCount: null
+      totalPageCount: null,
+      pageCount: null,
+      pageNumber: null,
+      showNextButton: true,
+      showPrevButton: true,
+      buttonData: dataSource
     };
   }
+  //  to go to 3rd page (8-12)
+  // 0-4  page 1
+  // 4-8  page 2
+  // 8-12 page 3
+  // 12-16  page 4
+  // arraySliceEnd = page * itemsperpage
+  // arraySliceStart = arraysliceend - itemsperpage
 
   // Count the total number of pages based on items per page and the number of items in the array
   pageCount = () => {
@@ -82,19 +96,32 @@ class Carousel1 extends Component {
   };
 
   render() {
-    let { itemsPerPage, data, arraySliceStart } = this.state;
+    let {
+      itemsPerPage,
+      data,
+      arraySliceStart,
+      showNextButton,
+      showPrevButton,
+      buttonData
+    } = this.state;
 
     // Variable for the end of the counter for the array slice.
     // if its bigger than the array it sets the value to max (of the array)
     let arraySliceEnd = arraySliceStart + itemsPerPage;
     if (arraySliceEnd >= data.length) {
       arraySliceEnd = data.length;
+      showNextButton = false;
+    }
+    if (arraySliceStart <= 0) {
+      showPrevButton = false;
+    } else {
+      showPrevButton = true;
     }
 
     // If i didnt have this code i got funky results in the end of the slider :)
-    if (arraySliceStart > data.length - itemsPerPage) {
-      arraySliceStart = data.length - itemsPerPage;
-    }
+    // if (arraySliceStart > data.length - itemsPerPage) {
+    //   arraySliceStart = data.length - itemsPerPage;
+    // }
 
     console.log("arraySliceStart: " + arraySliceStart);
     console.log("arraySliceEnd: " + arraySliceEnd);
@@ -106,20 +133,28 @@ class Carousel1 extends Component {
     let sliderContent = newArray.map((data) => {
       return (
         <div key={data.id} className={this.howManyCols()}>
+          <img src={data.image}></img>
           <h2>{data.title}</h2>
           <p>{data.body}</p>
-          <img src={data.image}></img>
         </div>
       );
     });
 
     return (
-      <div className="carousel" style={{ height: "500px" }}>
-        <BackButton prev={this.prev} showButton={true} />
-        <div className="container">
+      <div className="carousel-slider">
+        <BackButton
+          prev={this.prev}
+          showPrevButton={showPrevButton ? true : false}
+        />
+        <div className="container scroller-wrapper">
           <div className="row">{sliderContent}</div>
         </div>
-        <NextButton next={this.next} showButton={true} />
+
+        <NextButton
+          next={this.next}
+          showNextButton={showNextButton ? true : false}
+        />
+        <SliderButton data={data} />
       </div>
     );
   }

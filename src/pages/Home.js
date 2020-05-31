@@ -6,7 +6,8 @@ import Sections from "../components/pageLayouts/Sections";
 import HeaderTag from "../components/elements/headerTag";
 
 // import { Carousel } from "../components/carousel/";
-import { Carousel } from "../components/carousel-v3/";
+import { Carousel as PageCarousel } from "../components/carousel-v3/";
+import { Carousel } from "../components/carousel/";
 class homePage extends Component {
   constructor(props) {
     super(props);
@@ -93,10 +94,11 @@ class homePage extends Component {
       <React.Fragment>
         <Carousel />
         <HeaderTag title={title} />
+        <PageCarousel />
         <Sections
           vals={fourCol}
           padding={generalStyles.paddingTopBottom}
-          backgroundColor={generalStyles.backgroundColorOptions.darkGrey}
+          // backgroundColor={generalStyles.backgroundColorOptions.darkGrey}
         />
       </React.Fragment>
     );

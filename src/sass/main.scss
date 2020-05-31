@@ -82,13 +82,34 @@ body {
 /* -----------------------------------------------------------------
     Carousel styles
 ------------------------------------------------------------------- */
+.carousel-slider {
+  padding-bottom: 30px;
+}
+.slider-buttons-wrapper {
+  margin: 0 auto;
+}
+.slider-buttons {
+  width: 15px;
+  height: 15px;
+  // border: 1px solid $dark-grey;
+  border-radius: 50%;
+  background-color: $dark-orange;
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: $dark-grey;
+  }
+}
+
 .slide-block {
   position: absolute;
   left: 10%;
   top: 60%;
 }
 $transition: ease-in-out 0.3s all;
-.carousel {
+.carousel,
+.carousel-slider {
   width: 100%;
   height: auto;
   position: relative;
@@ -222,6 +243,24 @@ $transition: ease-in-out 0.3s all;
   .active {
     background-color: $white;
   }
+}
+
+/* Pagescroller styles */
+
+.scroller-wrapper {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding-top: 20px;
+}
+.scroller-wrapper h2 {
+  margin-top: 0;
+}
+
+.scroller-wrapper img {
+  width: 100%;
 }
 // animations
 .animateElementForward {

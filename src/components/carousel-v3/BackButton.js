@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 class BackButton extends Component {
   render() {
-    let { showButton } = this.props;
+    let { showPrevButton } = this.props;
     return (
       <a
-        style={{ display: showButton ? "block" : "none" }}
+        style={{ display: showPrevButton ? "block" : "none" }}
         className="backButton dark-orange"
         href="#"
         onClick={this.props.prev}

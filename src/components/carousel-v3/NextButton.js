@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 class NextButton extends Component {
   render() {
-    let { showButton } = this.props;
+    let { showNextButton } = this.props;
     return (
       <a
-        style={{ display: showButton ? "block" : "none" }}
+        style={{ display: showNextButton ? "block" : "none" }}
         className="nextButton dark-orange"
         href="#"
         onClick={this.props.next}
