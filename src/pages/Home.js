@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Parallax } from "react-parallax";
 
 // layouts
 import Sections from "../components/pageLayouts/Sections";
@@ -8,12 +9,23 @@ import HeaderTag from "../components/elements/headerTag";
 // import { Carousel } from "../components/carousel/";
 import { Carousel as PageCarousel } from "../components/carousel-v3/";
 import { Carousel } from "../components/carousel/";
+import image1 from "../img/lich-king.jpg";
+
+// const insideStyles = {
+//   background: "white",
+//   padding: 20,
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%,-50%)"
+// };
+
 class homePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: {
-        value: "welcome to my portfolio website",
+        value: "Welcome Fellow Gamers!!",
         color: "title-text"
       },
       fourCol: [
@@ -94,7 +106,26 @@ class homePage extends Component {
       <React.Fragment>
         <Carousel />
         <HeaderTag title={title} />
+
         <PageCarousel />
+        <Parallax
+          bgImage={image1}
+          bgImageAlt="Lich King"
+          blur={0}
+          strength={400}
+        >
+          <div style={{ height: "300px" }} />
+        </Parallax>
+        <Sections
+          vals={fourCol}
+          padding={generalStyles.paddingTopBottom}
+          // backgroundColor={generalStyles.backgroundColorOptions.darkGrey}
+        />
+        <Sections
+          vals={fourCol}
+          padding={generalStyles.paddingTopBottom}
+          // backgroundColor={generalStyles.backgroundColorOptions.darkGrey}
+        />
         <Sections
           vals={fourCol}
           padding={generalStyles.paddingTopBottom}

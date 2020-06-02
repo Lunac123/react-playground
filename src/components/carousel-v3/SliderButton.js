@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class SliderButton extends Component {
+class SliderButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,11 +9,12 @@ export class SliderButton extends Component {
   }
   render() {
     const { data } = this.props;
-    let { click } = this.props;
+    let { click, numberOfPages } = this.props;
+    console.log("number of pages inside sliderbutton: " + numberOfPages);
     let buttons = data.map((data, idx) => {
       return (
         <a
-          title={data.title}
+          // title={data.title}
           className="slider-buttons"
           key={data.id}
           id={"button" + data.id}
@@ -22,13 +23,8 @@ export class SliderButton extends Component {
         />
       );
     });
-    console.log("data from bannerbuttons : " + data);
 
-    return (
-      <div className="row">
-        <div className="slider-buttons-wrapper">{buttons}</div>;
-      </div>
-    );
+    return <div className="slider-buttons-wrapper">{buttons}</div>;
   }
 }
 export default SliderButton;

@@ -18,7 +18,7 @@ class Carousel extends Component {
   }
 
   componentDidMount = () => {
-    this.setBannerAnimation();
+    // this.setBannerAnimation();
   };
 
   setBannerAnimation = () => {

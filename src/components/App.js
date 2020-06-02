@@ -8,6 +8,7 @@ import "../sass/main.scss";
 import HomePage from "../pages/Home";
 import Projects from "../pages/Projects";
 import Gallery from "../pages/Gallery";
+import Testing from "../pages/Testing";
 
 // components
 import Navigation from "./common/navigation";
@@ -59,6 +60,12 @@ export default class componentName extends Component {
               path="/gallery"
               render={(props) => (
                 <Gallery generalStyles={generalStyles} {...props} />
+              )}
+            />
+            <Route
+              path="/Testing"
+              render={(props) => (
+                <Testing generalStyles={generalStyles} {...props} />
               )}
             />
           </Switch>

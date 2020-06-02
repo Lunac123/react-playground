@@ -10,6 +10,7 @@ class navigation extends Component {
             <Link to="/"> Home</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/gallery">Gallery</Link>
+            <Link to="/testing">Testing</Link>
           </nav>
         </div>
       </header>

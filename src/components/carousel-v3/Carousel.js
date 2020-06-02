@@ -1,14 +1,16 @@
 import React, { Component } from "react";
+
 import dataSource from "./data";
-import { BackButton, NextButton } from "./";
-import { SliderButton } from "./SliderButton";
+import { BackButton, NextButton, SliderContent, SliderButton } from "./";
+// import { SliderContent } from "./SliderContent";
+// import { SliderButton } from "./SliderButton";
 
 // import data from "./data";
 class Carousel1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemsPerPage: 4, // How many items to show in each row
+      itemsPerPage: 3, // How many items to show in each row
       fullWidthCols: 12, //Simplegrid 12-col max layout
       dataLenght: dataSource.length,
       data: dataSource,
@@ -17,28 +19,20 @@ class Carousel1 extends Component {
       pageCount: null,
       pageNumber: null,
       showNextButton: true,
-      showPrevButton: true,
-      buttonData: dataSource
+      showPrevButton: true
     };
   }
-  //  to go to 3rd page (8-12)
-  // 0-4  page 1
-  // 4-8  page 2
-  // 8-12 page 3
-  // 12-16  page 4
-  // arraySliceEnd = page * itemsperpage
-  // arraySliceStart = arraysliceend - itemsperpage
 
   // Count the total number of pages based on items per page and the number of items in the array
-  pageCount = () => {
+  pageCount = (arrayLength) => {
     let { dataLenght, itemsPerPage } = this.state;
-    let totalPageCount = parseInt(dataLenght / itemsPerPage);
-    console.log("pagecount is: " + totalPageCount);
+    // let totalPageCount = parseInt(dataLenght / itemsPerPage);
+    let totalPageCount = parseInt(arrayLength / itemsPerPage);
+    // console.log("pagecount is: " + totalPageCount);
+    return totalPageCount;
   };
 
-  componentDidMount = () => {
-    this.pageCount();
-  };
+  componentDidMount = () => {};
   next = () => {
     let { arraySliceStart, itemsPerPage, dataLenght } = this.state;
 
@@ -101,22 +95,30 @@ class Carousel1 extends Component {
       data,
       arraySliceStart,
       showNextButton,
-      showPrevButton,
-      buttonData
+      showPrevButton
     } = this.state;
 
     // Variable for the end of the counter for the array slice.
     // if its bigger than the array it sets the value to max (of the array)
+    let numberOfPages = this.pageCount(data.length);
     let arraySliceEnd = arraySliceStart + itemsPerPage;
+
+    // Hides previous and next buttons if the array is at the start or end of the array (last or first page)
     if (arraySliceEnd >= data.length) {
       arraySliceEnd = data.length;
       showNextButton = false;
     }
     if (arraySliceStart <= 0) {
       showPrevButton = false;
-    } else {
-      showPrevButton = true;
     }
+
+    //  to go to 3rd page (8-12)
+    // 0-4  page 1
+    // 4-8  page 2
+    // 8-12 page 3
+    // 12-16  page 4
+    // arraySliceEnd = page * itemsperpage
+    // arraySliceStart = arraysliceend - itemsperpage
 
     // If i didnt have this code i got funky results in the end of the slider :)
     // if (arraySliceStart > data.length - itemsPerPage) {
@@ -126,35 +128,27 @@ class Carousel1 extends Component {
     console.log("arraySliceStart: " + arraySliceStart);
     console.log("arraySliceEnd: " + arraySliceEnd);
 
-    // Slice out a portion of the array
-    let newArray = data.slice(arraySliceStart, arraySliceEnd);
-
-    // Map through the new array that was just sliced out
-    let sliderContent = newArray.map((data) => {
-      return (
-        <div key={data.id} className={this.howManyCols()}>
-          <img src={data.image}></img>
-          <h2>{data.title}</h2>
-          <p>{data.body}</p>
-        </div>
-      );
-    });
-
     return (
       <div className="carousel-slider">
         <BackButton
           prev={this.prev}
           showPrevButton={showPrevButton ? true : false}
         />
-        <div className="container scroller-wrapper">
-          <div className="row">{sliderContent}</div>
-        </div>
+
+        <SliderContent
+          data={data}
+          arraySliceStart={arraySliceStart}
+          arraySliceEnd={arraySliceEnd}
+          howManyCols={this.howManyCols()}
+        />
 
         <NextButton
           next={this.next}
           showNextButton={showNextButton ? true : false}
         />
-        <SliderButton data={data} />
+        <div className="row">
+          <SliderButton data={data} numberOfPages={numberOfPages} />
+        </div>
       </div>
     );
   }

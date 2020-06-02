@@ -9,7 +9,8 @@ class BannerButtons extends Component {
   }
   render() {
     const { data } = this.props;
-    let { click } = this.props;
+    let { click, numberOfPages } = this.props;
+
     let buttons = data.map((data, idx) => {
       return (
         <a
@@ -22,7 +23,7 @@ class BannerButtons extends Component {
         />
       );
     });
-    console.log("data from bannerbuttons : " + data);
+    // console.log("data from bannerbuttons : " + data);
 
     return <div className="banner-buttons-wrapper">{buttons}</div>;
   }
